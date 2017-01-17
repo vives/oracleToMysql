@@ -7,7 +7,6 @@ public class FindLine {
 
 	public static void main(String[] args) throws IOException {
 
-		// The name of the file to open.
 		String fileName = "/home/vive/export6.sql";
 
 		// This will reference one line at a time
@@ -18,10 +17,7 @@ public class FindLine {
 		String Month [] = {"JAN","FEB","MAR","APR","MAY","JUN","JUL","AGU","SEP","OCT","NOV","DEC"};
 
 		try {
-			// FileReader reads text files in the default encoding.
 			fileReader = new FileReader(fileName);
-
-			// Always wrap FileReader in BufferedReader.
 			bufferedReader = new BufferedReader(fileReader);
 
 			while ((line = bufferedReader.readLine()) != null) {
@@ -51,11 +47,8 @@ public class FindLine {
 			                   fileName + "'");
 		} catch (IOException ex) {
 			System.out.println("Error reading file '" + fileName + "'");
-			// Or we could just do this:
-			// ex.printStackTrace();
 		} finally {
 			if (fileReader != null) {
-				// Always close files.
 				bufferedReader.close();
 			}
 		}
