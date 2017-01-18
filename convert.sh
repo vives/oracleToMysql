@@ -1,6 +1,7 @@
 #!/bin/bash
 
 FILE=$1
+OUTPUTFILE=$2
 PATTERN="Insert"
 TIMESTAMPSTART="to_timestamp("
 TIMESTAMPSTARTEND=",'DD-MON-RR HH.MI.SSXFF AM')"
@@ -8,6 +9,13 @@ REPLACETIMESTAMP=""
 #NEWLINE="\n"
 DASH="-"
 Month=(JAN FEB MAR APR MAY JUN JUL AGU SEP OCT NOV DEC)
+
+echo "Do you want to create a new file?(y/n)"
+read reply
+if [ "$reply" == "y" ];then
+touch $1
+fi
+
 while IFS= read -r var
 do
 #grep -q foo <<<$string; then
@@ -35,6 +43,7 @@ then
 fi
 done
 fi
-  echo "$var" >>  $HOME/Desktop/script/output/output.sql
+  echo "$var" >>  $PWD/$OUTPUTFILE
 fi
 done < "$FILE"
+echo "Completed"
